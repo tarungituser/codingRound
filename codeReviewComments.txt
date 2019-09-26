@@ -1,0 +1,9 @@
+Code Review Comments:
+
+1)We should not use Thread.sleep, it is very bad practise.
+This will makes program hangs for sometime. Instead we should use explicit wait.
+
+2)Methods which are common to all classes like test initialize, test clean up, etc. we should
+have in base class and extends in every test class. (Inheritance).
+
+
