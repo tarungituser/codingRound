@@ -6,4 +6,10 @@ This will makes program hangs for sometime. Instead we should use explicit wait.
 2)Methods which are common to all classes like test initialize, test clean up, etc. we should
 have in base class and extends in every test class. (Inheritance).
 
+3)Project structure should be proper like according to maven standard. For example
 
+src/main -> should contains common classes like common functions which are common throughout the application
+
+src/test -> should contains test classes which contains test methods.
+
+4)
