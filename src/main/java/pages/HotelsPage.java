@@ -56,6 +56,11 @@ public class HotelsPage implements HotelsPageLocators{
     @FindBy(id = SearchHeaderLabelId)
     public static WebElement searchHeaderLabel;
 
+    @FindBy(id = WhereAutoOptionsListId)
+    public static WebElement whereAutoOptionsList;
+
+
+
     /**
      * This method will be used to search hotels
      * @param driver : Webdriver Instance
@@ -67,7 +72,7 @@ public class HotelsPage implements HotelsPageLocators{
         utils.waitForElementVisible(driver, localityTextBox);
         localityTextBox.clear();
         localityTextBox.sendKeys(hotelLocation);
-        Thread.sleep(4000); //This is for auto suggested option. This we can replace with explicit wait.
+        utils.waitForElementVisible(driver, whereAutoOptionsList);
         localityTextBox.sendKeys(Keys.RETURN);
         new Select(travellerSelection).selectByVisibleText(getTravellerDetails(travellersDetails));
         searchButton.click();
