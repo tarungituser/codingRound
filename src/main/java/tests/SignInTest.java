@@ -11,12 +11,6 @@ public class SignInTest extends BaseTestClass {
 
     PageFactory pageFactory = new PageFactory();
 
-    @BeforeMethod
-    public void testSetup()
-    {
-        pageFactory.getClearTripHomePageObj().landToHomePage(driver);
-    }
-
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 

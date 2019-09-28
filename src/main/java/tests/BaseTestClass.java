@@ -9,6 +9,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import pages.ClearTripHomePage;
+import pages.HotelsPage;
+import utilities.CommonUtils;
+import static pages.ClearTripHomePage.yourTripsLink;
 
 /**
  * Base class for all test classes.
@@ -16,6 +19,8 @@ import pages.ClearTripHomePage;
 public class BaseTestClass {
 
     public WebDriver driver;
+
+    CommonUtils utils = new CommonUtils();
 
     /**
      * This method will be used to test initialize
@@ -26,6 +31,10 @@ public class BaseTestClass {
         setDriverPath();
         driver = new ChromeDriver();
         PageFactory.initElements(driver, ClearTripHomePage.class);
+        PageFactory.initElements(driver, HotelsPage.class);
+        driver.get(utils.getProperty("clearTripLandingPage"));
+        driver.manage().window().maximize();
+        utils.waitForElementVisible(driver, yourTripsLink);
 
     }
 

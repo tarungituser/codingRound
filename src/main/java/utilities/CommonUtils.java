@@ -12,7 +12,7 @@ import java.util.Properties;
 
 public class CommonUtils {
 
-    private int timeOut = 20;
+    private int timeOut = 30;
 
     /**
      * This method will be used to get propert value from testsetting.properties file

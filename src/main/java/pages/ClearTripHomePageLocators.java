@@ -9,4 +9,5 @@ public static final String LoginErrorDivId = "errors1";
 public static final String UserNameTextBoxId = "email";
 public static final String PasswordTextBoxId = "password";
 public static final String LoginFormFrameId = "modal_window";
+public static final String HotelLinkText = "Hotels";
 }

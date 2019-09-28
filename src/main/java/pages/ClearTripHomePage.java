@@ -33,16 +33,8 @@ public class ClearTripHomePage implements ClearTripHomePageLocators{
     @FindBy(id = LoginFormFrameId)
     public static WebElement loginFormFrame;
 
-    /**
-     * This method will be used to landing to clear trip home page
-     * @param driver: Webdriver Instance
-     */
-    public void landToHomePage(WebDriver driver)
-    {
-        driver.get(utils.getProperty("clearTripLandingPage"));
-        driver.manage().window().maximize();
-        utils.waitForElementVisible(driver, yourTripsLink);
-    }
+    @FindBy(linkText = HotelLinkText)
+    public static WebElement hotelLink;
 
     /**
      * This method will be used to login to clear trip

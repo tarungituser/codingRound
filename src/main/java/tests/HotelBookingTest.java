@@ -1,37 +1,31 @@
 package tests;
 
-import com.sun.javafx.PlatformUtil;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.ClearTripHomePage;
+import pages.HotelsPage;
+import pages.PageFactory;
 
 public class HotelBookingTest extends BaseTestClass{
 
-    @FindBy(linkText = "Hotels")
-    private WebElement hotelLink;
-
-    @FindBy(id = "Tags")
-    private WebElement localityTextBox;
-
-    @FindBy(id = "SearchHotelsButton")
-    private WebElement searchButton;
-
-    @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
+    PageFactory pageFactory = new PageFactory();
 
     @Test
     public void shouldBeAbleToSearchForHotels() {
-
-        driver.get("https://www.cleartrip.com/");
-        hotelLink.click();
-
-        localityTextBox.sendKeys("Indiranagar, Bangalore");
-
-        new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
-        searchButton.click();
-
+        try {
+            ClearTripHomePage.hotelLink.click();
+            pageFactory.getHotelsPageObj().search(driver, "Indiranagar, Bangalore", HotelsPage.TravellersDetails.ROOM1ADULT1);
+            String searchHeaderLabelText = HotelsPage.searchHeaderLabel.getText();
+            String showingHotelsAroundHeaderText = HotelsPage.showingHotelsAroundHeader.getText();
+            Assert.assertTrue(searchHeaderLabelText.contains("Bangalore"));
+            Assert.assertTrue(searchHeaderLabelText.contains("1 room, 1 adult"));
+            Assert.assertTrue(showingHotelsAroundHeaderText.contains("Showing hotels around"));
+            Assert.assertTrue(showingHotelsAroundHeaderText.contains("Indiranagar"));
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage()); //We can log the exception message instead printing
+            Assert.fail("TC-Failed -" + e.getMessage());
+        }
     }
 }
