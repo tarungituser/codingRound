@@ -5,19 +5,27 @@ import org.testng.annotations.Test;
 import pages.FlightsPage;
 import pages.PageFactory;
 import pages.pojo.FlightSearchDetails;
+import utilities.CSVAnnotation;
+import utilities.GenericDataProvider;
+
+import java.util.Map;
 
 public class FlightBookingTest extends BaseTestClass{
 
     PageFactory pageFactory = new PageFactory();
 
-    @Test
-    public void testThatResultsAppearForAOneWayJourney() {
+    @Test(groups = {"smoke,regression"},
+            description = "This test case checks the one way flight search.",
+            dataProvider = "dataproviderForTestCase",
+            dataProviderClass = GenericDataProvider.class)
+    @CSVAnnotation.CSVFileParameters(delimiter = "###", path = "testdata/flightsearch.csv")
+    public void testThatResultsAppearForAOneWayJourney(int rowNo, Map<String,String> testData) {
         try {
 
             FlightSearchDetails flightSearchDetails = new FlightSearchDetails();
-            flightSearchDetails.setFromAirport("Bangalore");
-            flightSearchDetails.setToAirport("Delhi");
-            flightSearchDetails.setDepartsOnDate("10/10"); //Date/Month
+            flightSearchDetails.setFromAirport(testData.get("from"));
+            flightSearchDetails.setToAirport(testData.get("to"));
+            flightSearchDetails.setDepartsOnDate(testData.get("date")); //Date/Month
 
             pageFactory.getFlightsPageObj().searchOneWay(driver, flightSearchDetails);
             Assert.assertTrue(FlightsPage.searchSummary.isDisplayed());

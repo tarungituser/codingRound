@@ -9,7 +9,8 @@ public class SignInTest extends BaseTestClass {
 
     PageFactory pageFactory = new PageFactory();
 
-    @Test
+    @Test(groups = {"negative,regression"},
+            description = "This test case checks the sign in functionality without credentials.")
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
         try {

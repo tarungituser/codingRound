@@ -10,7 +10,8 @@ public class HotelBookingTest extends BaseTestClass{
 
     PageFactory pageFactory = new PageFactory();
 
-    @Test
+    @Test(groups = {"smoke,regression"},
+            description = "This test case checks the hotel search functionality.")
     public void shouldBeAbleToSearchForHotels() {
         try {
             ClearTripHomePage.hotelLink.click();

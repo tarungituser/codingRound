@@ -38,6 +38,9 @@ public class ClearTripHomePage implements ClearTripHomePageLocators{
 
     /**
      * This method will be used to login to clear trip
+     * @param driver : Webdriver instance
+     * @param userName : username as string
+     * @param password : password as string
      */
     public void login(WebDriver driver, String userName, String password)
     {
@@ -48,7 +51,6 @@ public class ClearTripHomePage implements ClearTripHomePageLocators{
         utils.waitForElementVisible(driver, userNameTextBox);
         userNameTextBox.sendKeys(userName);
         passwordTextBox.sendKeys(password);
-
         signInSubmitButton.click();
     }
 

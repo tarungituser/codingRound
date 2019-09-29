@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Coding Round Test Vagrant" verbose="10">
+
+    <test name="Coding Round Test Vagrant">
+        <classes>
+            <class name="tests.FlightBookingTest"/>
+            <class name="tests.HotelBookingTest"/>
+            <class name="tests.SignInTest"/>
+        </classes>
+    </test>
+
+</suite>
