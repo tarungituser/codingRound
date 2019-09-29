@@ -12,4 +12,17 @@ src/main -> should contains common classes like common functions which are commo
 
 src/test -> should contains test classes which contains test methods.
 
-4)
+4)There should be properties file which contains information at project level like
+application url, etc. Like I have implemented testsettings.properties file.
+
+5)There should be test ng file so that we can run via maven commands, also we can get other
+benefits of testng file.
+
+6)There should be result reporting like extent reports.
+
+7)There should not be hard coded values in test scripts like in flights test Bangalore, Delhi,etc
+are hard coded. It should be comes from testdata file.
+
+8)We should use page object model else a single ui change would need a lot of changes at a lot of places.
+
+etc...
